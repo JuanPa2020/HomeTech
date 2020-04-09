@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Productos</title>
+    <link rel="stylesheet" href="Estilos/estiloprincipal.css">
+    <link rel="stylesheet" href="Estilos/estilosproduct.css">
+</head>
+<body background="img/imgsesion.jpg">
+   <header>
+    <div class="contenedor">
+        <h1 class="img/logoiot.png"><img id="logo" src="img/logoiot.png"></h1>
+        <input type="checkbox" id="menu-bar">
+        <label class="fontawesome-align-justify" for="menu-bar"></label>
+               <nav class="menu">
+                   <a href="products.html">Inventario</a>
+                    <a href="Nosotros">Clientes</a>
+                    <a href="Ayuda">Mi Ventas</a>
+                    <a href="Sesion.html">Salir</a>
+                </nav>
+            </div>
+       </header>
+    <form>
+    <div id="f4">
+          <h2>INVENTARIO</h2>
+        <input name="Usuario" placeholder="Nombre" type="text">
+        <input name="Usuario" placeholder="Cantidad" type="number">
+        <input name="Usuario" placeholder="Valor unitario" type="text">
+    <select id="sel">   
+  <option value="Instock">In stock</option>
+  <option value="Outstock">Out stock</option>
+</select>
+        <input name="Usuario" placeholder="Descripcion" type="text">
+        <input value="GUARDAR" type="submit"/>
+         <input value="MODIFICAR" type="submit"/>
+          <input value="ELIMINAR" type="submit"/>
+           <input value="LIMPIAR CAMPOS" type="submit"/>
+        </div>
+        </form>

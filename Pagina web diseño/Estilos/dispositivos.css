@@ -1,0 +1,97 @@
+.onoffswitch {
+	margin-left: 100px;
+     background-color: rgba(55,55,55,0.5); 
+     height: 145px;
+     width: 120px;
+	border-radius: 10px;
+	border: 2px solid black;
+	top: 15px; 
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 24px;
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 28px; padding: 0; line-height: 28px;
+    font-size: 16px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 16px;
+    background-color: #7FDB39; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 16px;
+    background-color: #212126; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 18px; margin: 8px;
+    background: #FFFFFF;
+    position: block; top: 0; bottom: 0;
+    right: 73px;
+    border: 2px solid #999999; border-radius: 24px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
+
+.h1btn{
+	color: black;
+	position: relative;;
+	font-family: cursive; 
+	font-size: 20px; 
+	text-align: center;
+	margin-top: 3px;
+	left: 2px;
+	right: 2px;
+}
+
+.social {
+	border-radius: 10px;
+	position: fixed; /* Hacemos que la posición en pantalla sea fija para que siempre se muestre en pantalla*/
+	left: 0; /* Establecemos la barra en la izquierda */
+	top: 300px; /* Bajamos la barra 200px de arriba a abajo */
+	z-index: 2000; /* Utilizamos la propiedad z-index para que no se superponga algún otro elemento como sliders, galerías, etc */
+}
+ 
+	.social ul {
+		list-style: none;
+	}
+ 
+	.social ul li a {
+		display: inline-block;
+		color:gray;
+		background: gray;
+		padding: 10px 15px;
+		width: 80px;
+		height: 80px;
+		text-decoration: none;
+		-webkit-transition:all 500ms ease;
+		-o-transition:all 500ms ease;
+		transition:all 500ms ease; /* Establecemos una transición a todas las propiedades */
+	} 
+	.social ul li a:hover {
+		background: white; /* Cambiamos el fondo cuando el usuario pase el mouse */
+		padding: 10px 30px; /* Hacemos mas grande el espacio cuando el usuario pase el mouse */
+	}
+
+	.m{
+		position: fixed;
+		margin-left: 0;
+		margin-top: 4px;
+	}

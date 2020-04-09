@@ -1,0 +1,115 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome|typicons);
+
+[class*="fontawesome-"]:before {
+    font-family: 'FontAwesome', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.divisor {
+    margin-top: -400px;
+    background: black;
+    height: 500px;
+    border-left: 6px black solid;
+    right: 600px;
+    position: absolute;
+}
+
+#f1 {
+    float: left;
+    margin-top: -3%;
+    margin-left: 5%;
+    width: 50%;
+    max-width: 500px;
+    background: #f3f3f3;
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+#f2{
+    float: right;
+    margin-top: 2%;
+    margin-right: 5%;
+    width: 50%;
+    max-width: 500px;
+    background: #f3f3f3;
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+#f4{
+    float: left;
+    margin-top: 2%;
+    margin-right: 5%;
+    width: 50%;
+    max-width: 500px;
+    background: #f3f3f3;
+    padding: 30px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+#f3 img{
+    margin-bottom: 12px;
+    margin-left: 3%;
+    margin-top: 12%;
+    width: 600px;
+    height: 400px;
+}
+
+
+a {
+    margin-top:25px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: black;
+}
+
+h3,h2 {
+    float:left;
+    color:black;
+}
+
+input {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    margin: 30px 0;
+    font-size: 20px;
+}
+
+.sel {
+    display: block;
+    padding: 10px;
+    width: 100%;
+    margin: 30px 0;
+    font-size: 20px;
+}
+
+    input[type="submit"] {
+        background: linear-gradient(gray, gray);
+        border: 0;
+        color: black;
+        opacity: 0.5;
+        cursor: pointer;
+        border-radius: 20px;
+        margin-bottom: 0;
+    }
+
+        input[type="submit"]:hover {
+            opacity: 1;
+        }
+
+        input[type="submit"]:active {
+            transform: scale(0.90);
+        }
+
