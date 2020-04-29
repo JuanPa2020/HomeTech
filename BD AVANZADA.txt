@@ -1,0 +1,166 @@
+ CREATE****
+ 
+ create table CLIENTE ( 
+ IdCliente number(20) not null constraint cliente_pk primary key, 
+ Nombresyapellidos varchar2(100) not null, 
+ CiudadVivienda varchar2(50) not null )
+ 
+ create table SUCURSAL ( 
+ IdSucursal number(10) not null constraint sucursal_pk primary key, 
+ NombreSucursal varchar2(50) not null )
+ 
+ create table TIPO_MOVIMIENTO ( 
+ IdTipoMovimiento number(10) not null constraint idmovimiento_pk primary key, 
+ Descripcion varchar2(50) not null )
+
+ create table CUENTA ( 
+ IdCuenta number(10) not null constraint cuenta_pk primary key, 
+ NumeroCuenta number(10) not null, 
+ IdCliente number(10) not null,
+ constraint FK_cliente_pk 
+ foreign key (IdCliente) references CLIENTE(IdCliente),  
+ TipoCuenta varchar(10) not null, 
+ ValorSaldo number(30) not null,
+ IdSucursal number(10) not null,
+ constraint FK_sucursal_pk 
+ foreign key (IdSucursal) references SUCURSAL(IdSucursal))
+ 
+ create table MOVIMIENTOS_CUENTA(  
+ IdMovimiento number(10) not null constraint movimientos_pk primary key,  
+ IdCuenta number (10) not null,
+ constraint FK_cuenta_pk 
+ foreign key (IdCuenta) references CUENTA(IdCuenta),  
+ ValorMovimiento number (10) not null,  
+ IdTipoMovimiento number (10) not null,
+ constraint FK_idmovimiento_pk 
+ foreign key (IdTipoMovimiento) references TIPO_MOVIMIENTO (IdTipoMovimiento),
+ FechaMovimiento date not null )
+
+-----------------------------------------------------------------------------------------
+ INSERTS****
+
+ insert into CUENTA (IdCuenta,NumeroCuenta,IdCliente,TipoCuenta,ValorSaldo,IdSucursal) 
+ values (1,001,10,'Ahorros',30000000,100); 
+
+ select * from TIPO_MOVIMIENTO
+
+---------------------------------------------------------------------------------------------
+ CONSULTS****
+
+1) Presentar el valor del saldo que tiene “Ana Betancur”. 
+
+select a.NombresyApellidos, d.ValorSaldo, from CLIENTE a
+inner join CUENTA d 
+on a.IdCliente=d.IdCliente
+where NombresyApellidos='Ana Betancur'
+
+3) Presentar el consolidado de retiros que ha tenido cada sucursal 
+
+select tp.IdTipoMovimiento as RETIRO, tp.ValorMovimiento, sc.NombreSucursal as Nombre_Sucursal 
+from MOVIMIENTOS_CUENTA tp
+inner join SUCURSAL sc
+on tp.IdTipoMovimiento=tp.IdTipoMovimiento 
+where IdTipoMovimiento=1 
+
+5) Presentar el valor máximo consignado de cada cliente
+
+select cl.NombresyApellidos as Nombre_Completo, 
+max(mc.ValorMovimiento) as Maximo_consignado
+from CUENTA ct 
+inner join CLIENTE cl
+on ct.IdCliente =cl.IdCliente
+inner join MOVIMIENTOS_CUENTA mc
+on ct.IdCliente =cl.IdCliente 
+where IdTipoMovimiento=1
+group by cl.NombresyApellidos
+
+7) Cuál ha sido el movimiento con el máximo valor 
+
+select max(ValorMovimiento) as Maximo_Valor_Movimiento
+from MOVIMIENTOS_CUENTA
+
+9) Presentar el consolidado de retiros por sucursal 
+
+11) Presente el número de movimientos por cada tipo de movimiento 
+
+13) Presente el valor acumulado de retiros por cada cliente 
+
+15) Presentar el valor del saldo por cada sucursal (sume todas las consignaciones y reste los retiros) 
+
+17)  Presente el valor acumulado “consignado” por cada cliente y realizar las siguientes clasificaciones:  
+>= 0,0       y   < 2’000000  es “Pasivo” >= 2’000000     y   < 4’800000  es “Activo” >= 4’800000      
+  es “Estrella” 
+ 
+
+
+mcuenta
+
+
+
+9) Presentar el consolidado de retiros por sucursal 
+5) Presentar el valor máximo consignado de cada cliente
+
+select cl.NombresyApellidos as Nombre_Completo, 
+max(mc.ValorMovimiento) as Maximo_consignado
+from CUENTA ct 
+inner join CLIENTE cl
+on ct.IdCliente =cl.IdCliente
+inner join MOVIMIENTOS_CUENTA mc
+on ct.IdCliente =cl.IdCliente 
+where IdTipoMovimiento=1
+group by cl.NombresyApellidos
+
+SELECT * from MOVIMIENTOS_CUENTA
+CL.nombresyapellidos as "Nombre y Apellidos",
+MIN(MC.valormovimiento) as "Valor minimo consignado"
+
+FROM cliente CL
+INNER JOIN cuenta CU
+ON CL.idcliente = CU.idcliente
+INNER JOIN movimientos_cuenta MC
+ON CU.numerocuenta=MC.numerocuenta 
+
+GROUP BY CL.nombresyapellidos
+
+select tp.IdTipoMovimiento as RETIRO, tp.ValorMovimiento, sc.NombreSucursal as Nombre_Sucursal 
+from MOVIMIENTOS_CUENTA tp
+inner join SUCURSAL sc
+on tp.IdTipoMovimiento=tp.IdTipoMovimiento 
+where IdTipoMovimiento=1 
+
+
+11) Presente el número de movimientos por cada tipo de movimiento 
+
+select count(mv.TipoMovimiento)  as Numero_Movimientos, 
+tp.IdTipoMovimiento  as Tipo_de_Movimiento,
+tp.Descripcion,
+from MOVIMIENTOS_CUENTA mv
+inner join TIPO_MOVIMIENTO tp
+on mv.IdTipoMovimiento  =tp.IdTipoMovimiento
+where IdTipoMovimiento=1 
+group by tp.Descripcion
+
+
+17) Presente el valor acumulado “consignado” por cada cliente y realizar las siguientes clasificaciones: 
+ 
+>= 0,0       y   < 2’000000  es “Pasivo” >= 2’000000     y   < 4’800000  es “Activo” >= 4’800000        es “Estrella” 
+ 
+ select count(tp.IdTipoMovimiento) as Consignado,
+ cl.Descripcion, 
+ from TIPO_MOVIMIENTO tp
+ on tp.IdTipoMovimiento = cl.IdCuenta
+ inner join CLIENTE cl
+ on cu.IdCliente = 
+ 
+ select * from MOVIMIENTOS_CUENTA 
+13) Presente el valor acumulado de retiros por cada cliente 
+
+select sum(mv.ValorMovimiento)  as Valor_Movimiento, tp.Descripcion, 
+cl.NombresyApellidos as Nombre_completo   
+from MOVIMIENTOS_CUENTA mv
+inner join TIPO_MOVIMIENTO tp 
+on tp.IdTipoMovimiento=mv.IDMOVIMIENTO
+inner join CLIENTE cl
+where IdTipoMovimiento=1 
+group by cl.IdCliente
+
